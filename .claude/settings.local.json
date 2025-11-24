@@ -6,7 +6,13 @@
       "Bash(npm install:*)",
       "Bash(npx tailwindcss:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial ZDevStudio website\n\n- Set up Next.js with TypeScript, Tailwind CSS, and ESLint\n- Created responsive dark mode design\n- Implemented Navbar and Footer components\n- Built comprehensive homepage with Hero, What We Build, Why ZDevStudio, Featured App, Studio, Work With Us, and Contact sections\n- Configured project structure with App Router and src/ directory\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(gh repo create:*)",
+      "Bash(vercel login)",
+      "Bash(vercel:*)",
+      "Bash(npm run build:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
