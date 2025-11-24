@@ -224,75 +224,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Example Concepts Section */}
-        <section id="apps" className="section">
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
-              Example concepts we're exploring
-            </h2>
-            <p style={{
-              textAlign: 'center',
-              fontSize: '18px',
-              color: '#6C757D',
-              maxWidth: '700px',
-              margin: '0 auto 50px auto'
-            }}>
-              These are placeholder concepts to show the type of products we
-              like to work on.
-            </p>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '30px'
-            }}>
-              {[
-                {
-                  badge: 'Internal idea',
-                  title: 'Tiny routine companion',
-                  desc: 'A small helper for two or three meaningful daily habits—not twenty. Designed to be opened for seconds, not minutes.'
-                },
-                {
-                  badge: 'Idea backlog',
-                  title: 'Gentle focus blocks',
-                  desc: 'A focus timer that quietly marks out a block of time for one task—no streaks, no guilt, no gamification.'
-                },
-                {
-                  badge: 'Early exploration',
-                  title: 'One-minute daily check-in',
-                  desc: 'A quick daily check-in that captures how the day felt without turning your life into content.'
-                }
-              ].map((item, i) => (
-                <div key={i} className="card">
-                  <div style={{
-                    display: 'inline-block',
-                    background: '#E7F1FF',
-                    color: '#0D6EFD',
-                    padding: '6px 12px',
-                    borderRadius: '12px',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    marginBottom: '16px'
-                  }}>
-                    {item.badge}
-                  </div>
-                  <div style={{
-                    fontSize: '14px',
-                    color: '#6C757D',
-                    marginBottom: '8px'
-                  }}>
-                    Concept
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p style={{ margin: 0, color: '#6C757D', fontSize: '16px' }}>
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Contact Section */}
         <section id="contact" className="section section-alt">
           <div style={{
@@ -320,7 +251,7 @@ export default function HomePage() {
               transition: 'border-color 0.2s'
             }}>
               <a
-                href="mailto:hello@zdev.studio"
+                href="mailto:info@zdev.studio"
                 style={{
                   fontSize: '20px',
                   fontWeight: 600,
@@ -328,7 +259,7 @@ export default function HomePage() {
                   textDecoration: 'none'
                 }}
               >
-                hello@zdev.studio
+                info@zdev.studio
               </a>
             </div>
           </div>
