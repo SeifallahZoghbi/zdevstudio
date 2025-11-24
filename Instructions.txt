@@ -1,0 +1,147 @@
+# PROJECT: zdevstudio (ZDevStudio Website)
+# GOAL: Create a modern studio website using Next.js, Tailwind, GitHub, and Vercel.
+
+---------------------------------------------
+SECTION 1 — PROJECT SETUP
+---------------------------------------------
+1. Create a new local directory named `zdevstudio`.
+
+2. Inside Claude Code, initialize a Next.js project with:
+   - TypeScript
+   - Tailwind CSS
+   - ESLint
+   - App Router
+   - src/ directory enabled
+
+   Run this command:
+
+   npx create-next-app@latest zdevstudio \
+     --typescript \
+     --tailwind \
+     --eslint \
+     --app \
+     --src-dir \
+     --import-alias "@/*"
+
+3. After installation finishes, run:
+
+   cd zdevstudio
+   npm install
+
+4. Initialize Git and push to GitHub:
+
+   git init
+   git add .
+   git commit -m "Initial ZDevStudio website"
+   gh repo create zdevstudio --public --source=. --remote=origin --push
+
+   (If repo exists, just add remote:
+    git remote add origin https://github.com/USERNAME/zdevstudio.git
+    git push -u origin main
+   )
+
+---------------------------------------------
+SECTION 2 — PROJECT STRUCTURE
+---------------------------------------------
+Claude should create the following structure:
+
+/src
+  /app
+    layout.tsx
+    page.tsx
+    /styles (optional)
+  /components
+    Navbar.tsx
+    Footer.tsx
+    Section.tsx (optional helper)
+
+File: src/app/layout.tsx → Define global layout, fonts, metadata.
+File: src/app/page.tsx → Full homepage content for ZDevStudio.
+
+---------------------------------------------
+SECTION 3 — DESIGN REQUIREMENTS
+---------------------------------------------
+Overall style:
+- Dark mode aesthetic (slate/gray palette)
+- Minimalistic, modern, tech-studio look
+- Tailwind-only styling
+- Smooth spacing, rounded corners, clean typography
+
+Homepage should include:
+1. Top Navigation Bar
+   - Logo icon (letter "Z" in a square)
+   - Links: Apps, Studio, Work With Us, Contact
+
+2. Hero Section
+   - Headline: "Lean, AI-powered apps built for real people."
+   - Subtext about studio philosophy
+   - CTA buttons: "View our apps", "Partner with us"
+   - Studio LLC mention
+
+3. Sections:
+   - What We Build (3 cards)
+   - Why ZDevStudio (3–4 highlights)
+   - Featured App placeholder
+   - Studio (About section)
+   - Work With Us
+   - Contact Section
+   - Footer
+
+Claude should write clean, commented React components using functional components only.
+
+---------------------------------------------
+SECTION 4 — DEPLOYMENT SETUP
+---------------------------------------------
+1. After GitHub push, go to https://vercel.com/new
+2. Import the `zdevstudio` repository.
+3. Deploy the project (Next.js auto-detected).
+4. After deploy succeeds, go to:
+   Project → Settings → Domains → Add Domain
+5. Enter: zdev.studio
+
+Vercel will show required DNS records.
+
+---------------------------------------------
+SECTION 5 — NAMECHEAP DNS INSTRUCTIONS
+---------------------------------------------
+In Namecheap → Domain List → zdev.studio → Manage → Advanced DNS
+
+Add/verify these records:
+
+# Website (Vercel)
+A Record:
+- Type: A
+- Host: @
+- Value: 76.76.21.21
+
+CNAME Record:
+- Type: CNAME
+- Host: www
+- Value: cname.vercel-dns.com
+
+# Email (Namecheap Private Email)
+MX Records:
+- MX @ → mx1.privateemail.com (Priority 10)
+- MX @ → mx2.privateemail.com (Priority 20)
+
+CNAME:
+- mail → privateemail.com
+
+SPF TXT:
+- @ → v=spf1 include:spf.privateemail.com ~all
+
+Save all records.
+
+---------------------------------------------
+SECTION 6 — FINAL CHECK
+---------------------------------------------
+Claude should:
+✔ Generate the project scaffold
+✔ Create layout.tsx and page.tsx
+✔ Implement Tailwind dark theme design
+✔ Push the full project to GitHub
+✔ Output all created files at the end
+
+---------------------------------------------
+END OF FILE
+---------------------------------------------
