@@ -1,66 +1,85 @@
-You are helping me redesign an existing Next.js + Tailwind site deployed at https://zdevstudio.vercel.app/.
+You are helping me redesign my existing Next.js + Tailwind site at https://zdevstudio.vercel.app/.
 
-Project root directory name: `zdevstudio`
+The repo/project directory is called: `zdevstudio`.
 
-I want you to completely redesign the homepage and add a simple logo. The new narrative is:
+I want:
+- A complete visual redesign of the homepage.
+- A simple, modern logo.
+- New copy that clearly states: we build apps based on what our own team sees as genuinely valuable to people’s daily lives.
 
-- We are a small studio that builds apps based on what our own team sees as genuinely useful in day-to-day life.
-- We’re not chasing trends; we’re solving real annoyances and friction points we personally feel.
-- We care about calm, thoughtful, respectful products that quietly add value.
+IMPORTANT: Please MODIFY the existing project in place instead of creating a new one.
 
-Please follow ALL of these instructions carefully.
-
-------------------------------------------------
-SECTION 1 – GENERAL TECH CONTEXT
-------------------------------------------------
+================================================
+SECTION 1 – PROJECT + TECH CONTEXT
+================================================
 Assume:
+- Next.js 13+ or 14 with the App Router.
+- TypeScript.
+- Tailwind CSS already configured.
+- Homepage file: `src/app/page.tsx`
+- Global layout file: `src/app/layout.tsx`
+- Components can go in: `src/components`
+- Static assets (logo) go in: `public/`
 
-- Next.js 13+ or 14 with **App Router**.
-- TypeScript is enabled.
-- Tailwind CSS is already configured.
-- The homepage file is: `src/app/page.tsx`
-- Global layout file is: `src/app/layout.tsx`
-- Static assets (logo) should go under: `public/`
+If the exact paths differ slightly, adapt but keep the same structure and content.
 
-If the structure differs slightly, adapt the paths accordingly, but keep the same design and content.
+================================================
+SECTION 2 – BRAND + NARRATIVE
+================================================
+Studio name: ZDevStudio
 
-------------------------------------------------
-SECTION 2 – DESIGN DIRECTION
-------------------------------------------------
+Core narrative (use this as the backbone for copy):
+
+- We’re a small, independent app studio.
+- We build apps based on what our team personally feels adds real value to day-to-day life.
+- We start from real annoyances and frictions we experience ourselves.
+- If we wouldn’t happily use it daily, we don’t ship it.
+- We prefer calm, respectful products over attention-hacking.
+
+Tone of voice:
+- Calm, honest, human.
+- No hype, no buzzword soup.
+- Short, clear sentences.
+
+================================================
+SECTION 3 – VISUAL DESIGN DIRECTION
+================================================
 Overall style:
-
-- Light, calm, minimal.
-- Background: very light slate/stone.
-- Accent colors: a soft blue/cyan and a warm neutral (like amber or soft orange).
-- Rounded corners, generous whitespace, no harsh shadows.
-- Typography: simple, modern, friendly.
-
-Tone:
-
-- Human and grounded.
-- Less “hype startup”, more “thoughtful product studio”.
-- Speak in plain English, no buzzword soup.
+- Light, minimal, warm.
+- Background: very light neutral (e.g., `bg-slate-50` or similar).
+- Accent: soft blue/cyan with a warm supporting accent (like a soft amber).
+- Lots of whitespace, rounded corners.
+- No heavy gradients, no neon/glassmorphism.
 
 Layout:
+- Sticky top navigation with logo and anchor links.
+- Single-page feel with clear sections:
+  1) Hero
+  2) “What we build”
+  3) “How we decide what to build” / “Our philosophy”
+  4) Example concepts / apps (placeholder cards)
+  5) Contact
 
-- Sticky top navigation with logo and anchors.
-- Single-page style with sections: Hero, “What we build”, “Our philosophy”, “Examples of apps”, “How we choose ideas”, “Contact”.
-- Responsive: looks good on mobile and desktop.
+Must be fully responsive.
+
+================================================
+SECTION 4 – LOGO (SVG)
+================================================
+Create a simple logo SVG and save it as:
+
+  public/logo-zdev.svg
+
+Requirements:
+- Rounded square background.
+- Stylized “Z” path inside.
+- Flat, minimal, no gradients, no 3D.
+- Works at small sizes (navbar, favicon-style use).
+
+Create the file with EXACT contents below:
 
 ------------------------------------------------
-SECTION 3 – LOGO CREATION
-------------------------------------------------
-Create a simple, flat SVG logo with the following requirements:
-
-- Icon: rounded square with a stylized “Z” inside.
-- Colors: dark slate background, light accent stroke/fill for the “Z”.
-- Style: minimal, no gradients, no 3D, must work well at small sizes (favicon and navbar).
-- File path: `public/logo-zdev.svg`
-
-Create this file with EXACT content below:
-
 File: public/logo-zdev.svg
---------------------------------
+------------------------------------------------
 <?xml version="1.0" encoding="UTF-8"?>
 <svg
   width="64"
@@ -85,30 +104,29 @@ File: public/logo-zdev.svg
     stroke-linejoin="round"
   />
 </svg>
---------------------------------
-
-This represents a stylized “Z” drawn as a path on a rounded square.
-
 ------------------------------------------------
-SECTION 4 – GLOBAL LAYOUT (layout.tsx)
-------------------------------------------------
+
+================================================
+SECTION 5 – GLOBAL LAYOUT (layout.tsx)
+================================================
 Update `src/app/layout.tsx` to:
 
-1. Set the page metadata (title + description).
-2. Use a simple, readable font stack.
-3. Provide a neutral, light background and basic text color.
+- Set the site title + description to match the new narrative.
+- Use a light background and dark text.
+- Keep it simple.
 
-Replace the existing layout with something like:
+Replace the file contents with something equivalent to this (adapt types if needed):
 
+------------------------------------------------
 File: src/app/layout.tsx
---------------------------------
+------------------------------------------------
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ZDevStudio – Apps for everyday life",
   description:
-    "ZDevStudio is a small studio that builds calm, thoughtful apps based on what our team finds truly useful in day-to-day life.",
+    "ZDevStudio is a small studio that builds calm, thoughtful apps based on what our team feels genuinely adds value to everyday life.",
 };
 
 export default function RootLayout({
@@ -124,19 +142,16 @@ export default function RootLayout({
     </html>
   );
 }
---------------------------------
+------------------------------------------------
 
-If TypeScript or props differ slightly, adapt but keep behavior equivalent.
+================================================
+SECTION 6 – HEADER + FOOTER COMPONENTS
+================================================
+Create a header and footer to keep the homepage clean.
 
 ------------------------------------------------
-SECTION 5 – HEADER + FOOTER COMPONENTS
-------------------------------------------------
-Create a small set of components in `src/components` to keep `page.tsx` clean.
-
-### 5.1 Header
-
 File: src/components/SiteHeader.tsx
---------------------------------
+------------------------------------------------
 "use client";
 
 import Link from "next/link";
@@ -145,9 +160,8 @@ import { useState } from "react";
 
 const navItems = [
   { href: "#what-we-build", label: "What we build" },
-  { href: "#philosophy", label: "Our philosophy" },
+  { href: "#how-we-decide", label: "How we decide" },
   { href: "#apps", label: "Examples" },
-  { href: "#how-we-choose", label: "How we choose ideas" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -157,7 +171,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-slate-50/80 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:py-4">
-        <Link href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-slate-200 bg-white">
             <Image
               src="/logo-zdev.svg"
@@ -170,7 +184,9 @@ export function SiteHeader() {
             <span className="text-sm font-semibold tracking-tight">
               ZDevStudio
             </span>
-            <span className="text-xs text-slate-500">Apps for everyday life</span>
+            <span className="text-xs text-slate-500">
+              Apps for everyday life
+            </span>
           </div>
         </Link>
 
@@ -214,40 +230,56 @@ export function SiteHeader() {
     </header>
   );
 }
---------------------------------
+------------------------------------------------
 
-### 5.2 Footer
-
+------------------------------------------------
 File: src/components/SiteFooter.tsx
---------------------------------
+------------------------------------------------
 export function SiteFooter() {
   return (
     <footer className="border-t border-slate-200 bg-slate-50">
       <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
         <p>© {new Date().getFullYear()} ZDevStudio. All rights reserved.</p>
         <p className="text-xs">
-          ZDevStudio LLC · Delaware, USA · Apps built with care for everyday life.
+          ZDevStudio LLC · Delaware, USA · Apps our team actually uses.
         </p>
       </div>
     </footer>
   );
 }
---------------------------------
+------------------------------------------------
+
+================================================
+SECTION 7 – HOMEPAGE REDESIGN (page.tsx)
+================================================
+Now completely replace `src/app/page.tsx` with a new homepage that:
+
+- Uses `<SiteHeader />` at the top and `<SiteFooter />` at the bottom.
+- Contains these sections, in order:
+  1. Hero
+  2. What we build
+  3. How we decide what to build (philosophy)
+  4. Example concepts/apps (placeholder cards)
+  5. Contact
+
+Please use the narrative below as the basis for the copy. You can phrase it naturally but keep the meaning:
+
+Core hero idea:
+- “We build small, thoughtful apps based on what our own team wishes existed in their day-to-day lives.”
+
+Additional points:
+- We observe our own routines and frictions.
+- We prototype quickly, test internally first.
+- We keep apps small, calm, and respectful of attention.
+- If it doesn’t make someone’s day meaningfully nicer or smoother, we don’t keep working on it.
+
+Implement something equivalent to:
 
 ------------------------------------------------
-SECTION 6 – HOMEPAGE CONTENT (NEW NARRATIVE)
-------------------------------------------------
-Now completely replace the homepage with a new design and copy that matches this narrative:
-
-> We build apps that our own team wishes existed. We notice small frictions in our daily lives, prototype calmly, and keep only what genuinely makes our days feel lighter.
-
-Implement this in `src/app/page.tsx` using the header and footer components.
-
 File: src/app/page.tsx
---------------------------------
+------------------------------------------------
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -256,22 +288,22 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-slate-100/60">
+        <section className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-slate-100/70">
           <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-12 md:flex-row md:items-center md:py-16">
             <div className="flex-1">
               <p className="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500 shadow-sm">
-                Small studio · Real-life apps
+                Small studio · Everyday value
               </p>
               <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
                 We build apps
                 <br />
-                our team actually wants to use.
+                our team wishes existed.
               </h1>
               <p className="mt-4 max-w-xl text-sm text-slate-600 md:text-base">
-                ZDevStudio is a tiny product studio that designs and ships apps
-                based on real annoyances and needs we notice in our own lives.
-                No trend-chasing—just calm, useful tools that quietly make
-                everyday routines feel lighter.
+                ZDevStudio is a small app studio that starts from real life:
+                routines, frictions, and tiny annoyances we feel every day.
+                We design and ship calm, focused apps that our own team is
+                happy to live with on their home screens.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -279,42 +311,41 @@ export default function HomePage() {
                   href="#apps"
                   className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-sky-400"
                 >
-                  See example apps
+                  See example concepts
                 </a>
                 <a
-                  href="#how-we-choose"
+                  href="#how-we-decide"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-800 hover:bg-white"
                 >
-                  How we choose ideas
+                  How we decide what to build
                 </a>
               </div>
 
               <p className="mt-5 text-xs text-slate-500">
-                Structured as ZDevStudio LLC, a Delaware single-member LLC. We
-                build slowly, keep things small, and focus on products we’re
-                happy to live with.
+                Structured as ZDevStudio LLC, a Delaware single-member LLC.
+                We keep things small, move at a calm pace, and only keep
+                products that feel genuinely useful.
               </p>
             </div>
 
             <div className="flex-1 md:pl-8">
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
                 <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-                  How we think
+                  How we work
                 </p>
                 <h2 className="mt-3 text-base font-semibold text-slate-900">
-                  Small, thoughtful, and calm by design.
+                  Real routines, not hypotheticals.
                 </h2>
                 <p className="mt-2 text-sm text-slate-600">
-                  We keep our app ideas close to home: things our team struggles
-                  with, workflows we repeat every day, habits we&apos;re trying
-                  to build or maintain. If an idea doesn&apos;t meaningfully
-                  improve someone&apos;s day, we don&apos;t ship it.
+                  We look at how we actually live and work: where we get stuck,
+                  what we avoid, what we keep wishing was easier. Every idea
+                  starts there, not in a pitch deck.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                  <li>• Start from real daily friction.</li>
-                  <li>• Prototype quietly, test with ourselves first.</li>
-                  <li>• Keep the interface boringly clear.</li>
-                  <li>• Only keep what still feels useful months later.</li>
+                  <li>• Start from a real, repeated friction.</li>
+                  <li>• Prototype quickly and use it ourselves first.</li>
+                  <li>• Strip away anything that feels like noise.</li>
+                  <li>• Keep only what still feels valuable months later.</li>
                 </ul>
               </div>
             </div>
@@ -331,19 +362,18 @@ export default function HomePage() {
               What we build
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-              We focus on small apps that sit quietly on your home screen and
-              earn their place by being opened every day—sometimes for only a
-              few seconds, but always for a good reason.
+              Our best apps are small, quiet tools that earn their place on your
+              home screen by making some part of your day meaningfully easier.
             </p>
 
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h3 className="text-sm font-semibold text-slate-900">
-                  Daily routines
+                  Everyday workflows
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  Tools that make repeated tasks—planning, logging, tracking,
-                  remembering—feel lighter and less mental load.
+                  Simple helpers for repeated tasks—planning, logging,
+                  remembering—that reduce mental load instead of adding to it.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -351,8 +381,8 @@ export default function HomePage() {
                   Personal wellbeing
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  Apps that help build small, sustainable habits around health,
-                  reflection, and self-care without shouting for attention.
+                  Calm tools around habits, reflection, and self-care that
+                  respect your time and attention.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -361,67 +391,86 @@ export default function HomePage() {
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
                   Focused utilities that remove friction from everyday digital
-                  workflows instead of adding more noise.
+                  work instead of chasing engagement.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Philosophy */}
-        <section id="philosophy" className="border-b border-slate-200 bg-white">
+        {/* How we decide */}
+        <section
+          id="how-we-decide"
+          className="border-b border-slate-200 bg-white"
+        >
           <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
             <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              Our philosophy
+              How we decide what to build
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-              The app stores are full of products built for pitch decks, not for
-              people. We try to flip that: we start from lived experience, build
-              slowly, and keep our apps honest and uncomplicated.
+              Every idea starts with someone on the team saying, “This is
+              annoying. I wish there were a better way.” Then we pressure-test
+              it with a few simple questions.
             </p>
 
-            <div className="mt-7 grid gap-5 md:grid-cols-3">
+            <div className="mt-7 grid gap-5 md:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                 <h3 className="text-sm font-semibold text-slate-900">
-                  Real-life first
+                  1. Is this a real, recurring friction?
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  Ideas must come from day-to-day life: a recurring annoyance, a
-                  workflow that feels heavier than it should, a habit that&apos;s
-                  hard to stick to.
+                  We look for patterns in our own days and conversations. If
+                  it&apos;s a one-off complaint, we let it go. If it keeps
+                  coming up, we explore.
                 </p>
               </div>
+
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                 <h3 className="text-sm font-semibold text-slate-900">
-                  Calm by default
+                  2. Can it stay small and focused?
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  We avoid dark patterns, addictive loops, and noisy
-                  notifications. Our best apps feel boring—in a good way.
+                  We prefer products that can do one job well with a clear,
+                  simple interface. If an idea demands ten dashboards, it&apos;s
+                  probably not for us.
                 </p>
               </div>
+
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                 <h3 className="text-sm font-semibold text-slate-900">
-                  Long-term usefulness
+                  3. Would we use it a year from now?
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  We try to build things that still make sense a year later. If
-                  an idea feels like a fad, we&apos;re happy to let it pass.
+                  We try to ignore hype. If we can&apos;t imagine ourselves
+                  still using the app regularly after the novelty wears off,
+                  we&apos;re comfortable killing the idea early.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                <h3 className="text-sm font-semibold text-slate-900">
+                  4. Does it respect people&apos;s attention?
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">
+                  We avoid dark patterns and addictive loops. The ideal app
+                  lets you get what you need quickly, then get back to your
+                  life.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Example apps section (placeholder cards) */}
+        {/* Example concepts */}
         <section id="apps" className="border-b border-slate-200 bg-slate-50">
           <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
             <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              Examples of apps we&apos;re working on
+              Example concepts we&apos;re exploring
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-              These are examples and placeholders you can later replace with
-              real, shipped products.
+              These are placeholder concepts to show the type of products we
+              like to work on. You can later replace them with real, shipped
+              apps.
             </p>
 
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -430,15 +479,14 @@ export default function HomePage() {
                   Concept
                 </span>
                 <h3 className="mt-2 text-sm font-semibold text-slate-900">
-                  Micro-routine tracker
+                  Tiny routine companion
                 </h3>
                 <p className="mt-2 flex-1 text-sm text-slate-600">
-                  A 15-second-a-day tracker for two or three habits that
-                  actually matter, not a list of 20 that you&apos;ll never
-                  maintain.
+                  A small helper for two or three meaningful daily habits—not
+                  twenty. Designed to be opened for seconds, not minutes.
                 </p>
                 <p className="mt-3 text-xs text-slate-500">
-                  Status: internal prototype
+                  Status: internal idea
                 </p>
               </div>
 
@@ -447,11 +495,11 @@ export default function HomePage() {
                   Concept
                 </span>
                 <h3 className="mt-2 text-sm font-semibold text-slate-900">
-                  Gentle focus timer
+                  Gentle focus blocks
                 </h3>
                 <p className="mt-2 flex-1 text-sm text-slate-600">
-                  A simple focus timer with soft edges—no streaks, no shame,
-                  just a way to give one task your full attention for a while.
+                  A focus timer that quietly marks out a block of time for one
+                  task—no streaks, no guilt, no gamification.
                 </p>
                 <p className="mt-3 text-xs text-slate-500">
                   Status: idea backlog
@@ -463,78 +511,14 @@ export default function HomePage() {
                   Concept
                 </span>
                 <h3 className="mt-2 text-sm font-semibold text-slate-900">
-                  Quiet check-in journal
+                  One-minute daily check-in
                 </h3>
                 <p className="mt-2 flex-1 text-sm text-slate-600">
-                  A tiny daily check-in that captures how the day felt in under
-                  a minute, with no social feed, no likes, and no pressure.
+                  A quick daily check-in that captures how the day felt without
+                  turning your life into content.
                 </p>
                 <p className="mt-3 text-xs text-slate-500">
-                  Status: in exploration
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How we choose ideas */}
-        <section
-          id="how-we-choose"
-          className="border-b border-slate-200 bg-white"
-        >
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              How we choose what to build
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-              Every idea starts with someone on the team saying, &quot;I really
-              wish this existed.&quot; From there, we ask a few simple
-              questions before we commit.
-            </p>
-
-            <div className="mt-7 grid gap-5 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  1. Does it fix a real friction?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We look for patterns in our own days: tasks we avoid,
-                  workflows that always feel heavier than they should, things we
-                  keep thinking we should track but never do.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  2. Can it stay small?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We prefer products that can remain focused: one clear job,
-                  simple interface, no feature bloat. If it needs five dashboards
-                  to make sense, it&apos;s probably not for us.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  3. Would we still use it a year from now?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We try to skip hype. If we can&apos;t imagine the app being
-                  part of our routines long after launch, we&apos;re comfortable
-                  dropping the idea early.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  4. Can it stay respectful of attention?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We avoid designs that constantly pull you back in. The best
-                  apps, for us, are the ones you open briefly, get what you
-                  need, and then forget about until you actually need them
-                  again.
+                  Status: early exploration
                 </p>
               </div>
             </div>
@@ -542,20 +526,20 @@ export default function HomePage() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="bg-slate-50">
+        <section id="contact" className="bg-white">
           <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
             <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              Get in touch
+              Contact
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
               If you&apos;d like to follow what we&apos;re building, explore a
-              quiet collaboration, or just share an everyday problem you&apos;d
-              love an app for, we&apos;re happy to hear from you.
+              collaboration, or share an everyday problem you&apos;d love an
+              app for, we&apos;re happy to hear from you.
             </p>
 
-            <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 md:p-6">
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6">
               <p className="text-sm text-slate-700">
-                For now, the easiest way to reach us is by email:
+                For now, the easiest way to reach us is:
               </p>
               <p className="mt-2 text-sm font-medium text-slate-900">
                 <a
@@ -566,8 +550,8 @@ export default function HomePage() {
                 </a>
               </p>
               <p className="mt-4 text-xs text-slate-500">
-                In the future, this section can become a simple contact form
-                wired to your email or a small support inbox.
+                Later, this can be swapped for a simple contact form wired to
+                your preferred inbox or support tool.
               </p>
             </div>
           </div>
@@ -578,26 +562,26 @@ export default function HomePage() {
     </div>
   );
 }
---------------------------------
-
 ------------------------------------------------
-SECTION 7 – FINAL CHECK
-------------------------------------------------
-After implementing all files:
 
-1. Run `npm run lint` and `npm run dev` to ensure there are no TypeScript or runtime errors.
-2. Confirm the logo is visible in the navbar.
-3. Confirm all anchors (What we build, Our philosophy, Examples, How we choose, Contact) scroll correctly.
-4. Push changes to GitHub.
-5. Vercel should auto-redeploy the updated site at https://zdevstudio.vercel.app/.
+================================================
+SECTION 8 – FINAL CHECK & OUTPUT
+================================================
+1. Run `npm run lint` and `npm run dev` to ensure there are no TS or runtime errors.
+2. Confirm:
+   - Logo shows in the navbar.
+   - The page looks good on mobile and desktop.
+   - Anchor links scroll to the right sections.
+3. Commit and push changes to GitHub so Vercel redeploys https://zdevstudio.vercel.app/.
 
-Output all the modified file contents at the end so I can review them:
+Finally, output the FULL contents of these files so I can review them:
+
+- public/logo-zdev.svg
 - src/app/layout.tsx
 - src/app/page.tsx
 - src/components/SiteHeader.tsx
 - src/components/SiteFooter.tsx
-- public/logo-zdev.svg
 
-------------------------------------------------
+================================================
 END OF INSTRUCTIONS
-------------------------------------------------
+================================================

@@ -6,9 +6,8 @@ import { useState } from "react";
 
 const navItems = [
   { href: "#what-we-build", label: "What we build" },
-  { href: "#philosophy", label: "Our philosophy" },
+  { href: "#how-we-decide", label: "How we decide" },
   { href: "#apps", label: "Examples" },
-  { href: "#how-we-choose", label: "How we choose ideas" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -18,7 +17,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-slate-50/80 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:py-4">
-        <Link href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-slate-200 bg-white">
             <Image
               src="/logo-zdev.svg"

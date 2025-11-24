@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ZDevStudio – Apps for everyday life",
   description:
-    "ZDevStudio is a small studio that builds calm, thoughtful apps based on what our team finds truly useful in day-to-day life.",
+    "ZDevStudio is a small studio that builds calm, thoughtful apps based on what our team feels genuinely adds value to everyday life.",
 };
 
 export default function RootLayout({
