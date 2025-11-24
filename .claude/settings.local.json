@@ -12,7 +12,10 @@
       "Bash(vercel login)",
       "Bash(vercel:*)",
       "Bash(npm run build:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(npm run lint)"
     ],
     "deny": [],
     "ask": []
