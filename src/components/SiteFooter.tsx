@@ -1,11 +1,34 @@
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-50">
-      <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} ZDevStudio. All rights reserved.</p>
-        <p className="text-xs">
-          ZDevStudio LLC · Delaware, USA · Apps our team actually uses.
-        </p>
+    <footer style={{
+      background: '#212529',
+      color: '#6C757D',
+      padding: '40px',
+      textAlign: 'center'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        <div style={{
+          fontSize: '18px',
+          fontWeight: 600,
+          color: '#FFFFFF',
+          marginBottom: '12px'
+        }}>
+          ZDevStudio
+        </div>
+        <div style={{
+          fontSize: '14px',
+          marginBottom: '8px'
+        }}>
+          ZDevStudio LLC · Delaware, USA
+        </div>
+        <div style={{
+          fontSize: '14px'
+        }}>
+          © {new Date().getFullYear()} ZDevStudio LLC. All rights reserved.
+        </div>
       </div>
     </footer>
   );

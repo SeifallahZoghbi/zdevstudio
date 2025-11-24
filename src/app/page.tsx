@@ -3,276 +3,333 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div>
       <SiteHeader />
 
-      <main className="flex-1">
-        {/* Hero */}
-        <section className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-slate-100/70">
-          <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-12 md:flex-row md:items-center md:py-16">
-            <div className="flex-1">
-              <p className="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500 shadow-sm">
-                Small studio · Everyday value
-              </p>
-              <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                We build apps
-                <br />
-                our team wishes existed.
-              </h1>
-              <p className="mt-4 max-w-xl text-sm text-slate-600 md:text-base">
-                ZDevStudio is a small app studio that starts from real life:
-                routines, frictions, and tiny annoyances we feel every day.
-                We design and ship calm, focused apps that our own team is
-                happy to live with on their home screens.
-              </p>
+      <main style={{ paddingTop: '80px' }}>
+        {/* Hero Section */}
+        <section className="section" style={{
+          textAlign: 'center',
+          padding: '100px 40px',
+          maxWidth: '800px',
+          margin: '0 auto'
+        }}>
+          <div style={{
+            fontSize: '14px',
+            color: '#0D6EFD',
+            marginBottom: '20px',
+            fontWeight: 500
+          }}>
+            Small studio · Everyday value
+          </div>
+          <h1>We build apps our team wishes existed.</h1>
+          <p style={{
+            fontSize: '20px',
+            color: '#6C757D',
+            marginBottom: '30px'
+          }}>
+            ZDevStudio is a small app studio that starts from real life:
+            routines, frictions, and tiny annoyances we feel every day.
+            We design and ship calm, focused apps that our own team is
+            happy to live with on their home screens.
+          </p>
+          <a href="#what-we-build" className="btn">Learn More</a>
+          <p style={{
+            fontSize: '14px',
+            color: '#6C757D',
+            marginTop: '30px'
+          }}>
+            Structured as ZDevStudio LLC, a Delaware single-member LLC
+          </p>
+        </section>
 
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                <a
-                  href="#apps"
-                  className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-sky-400"
-                >
-                  See example concepts
-                </a>
-                <a
-                  href="#how-we-decide"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-800 hover:bg-white"
-                >
-                  How we decide what to build
-                </a>
-              </div>
+        {/* How We Work Section */}
+        <section id="how-we-work" className="section section-alt">
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>
+              How We Work
+            </h2>
+            <p style={{
+              textAlign: 'center',
+              fontSize: '18px',
+              color: '#6C757D',
+              maxWidth: '700px',
+              margin: '0 auto 40px auto'
+            }}>
+              We look at how we actually live and work: where we get stuck,
+              what we avoid, what we keep wishing was easier. Every idea
+              starts there, not in a pitch deck.
+            </p>
 
-              <p className="mt-5 text-xs text-slate-500">
-                Structured as ZDevStudio LLC, a Delaware single-member LLC.
-                We keep things small, move at a calm pace, and only keep
-                products that feel genuinely useful.
-              </p>
-            </div>
-
-            <div className="flex-1 md:pl-8">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-                  How we work
-                </p>
-                <h2 className="mt-3 text-base font-semibold text-slate-900">
-                  Real routines, not hypotheticals.
-                </h2>
-                <p className="mt-2 text-sm text-slate-600">
-                  We look at how we actually live and work: where we get stuck,
-                  what we avoid, what we keep wishing was easier. Every idea
-                  starts there, not in a pitch deck.
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                  <li>• Start from a real, repeated friction.</li>
-                  <li>• Prototype quickly and use it ourselves first.</li>
-                  <li>• Strip away anything that feels like noise.</li>
-                  <li>• Keep only what still feels valuable months later.</li>
-                </ul>
-              </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '20px',
+              marginTop: '40px'
+            }}>
+              {[
+                {
+                  title: 'Start from real friction',
+                  desc: 'We look for patterns in our own days: tasks we avoid, workflows that feel heavier than they should.'
+                },
+                {
+                  title: 'Prototype quickly',
+                  desc: 'We prototype quickly and use it ourselves first to see if it actually helps.'
+                },
+                {
+                  title: 'Strip away noise',
+                  desc: 'We remove anything that feels like noise or unnecessary complexity.'
+                },
+                {
+                  title: "Keep what's valuable",
+                  desc: 'We only keep what still feels useful and valuable months later.'
+                }
+              ].map((item, i) => (
+                <div key={i} className="card">
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
+                    <span className="dot"></span>
+                    <h3 style={{ margin: 0, fontSize: '18px' }}>{item.title}</h3>
+                  </div>
+                  <p style={{ margin: 0, color: '#6C757D', fontSize: '16px' }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* What we build */}
-        <section
-          id="what-we-build"
-          className="border-b border-slate-200 bg-slate-50"
-        >
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
+        {/* What We Build Section */}
+        <section id="what-we-build" className="section">
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
               What we build
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
+            <p style={{
+              textAlign: 'center',
+              fontSize: '18px',
+              color: '#6C757D',
+              maxWidth: '700px',
+              margin: '0 auto 50px auto'
+            }}>
               Our best apps are small, quiet tools that earn their place on your
               home screen by making some part of your day meaningfully easier.
             </p>
 
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  Everyday workflows
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  Simple helpers for repeated tasks—planning, logging,
-                  remembering—that reduce mental load instead of adding to it.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  Personal wellbeing
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  Calm tools around habits, reflection, and self-care that
-                  respect your time and attention.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  Quiet productivity
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  Focused utilities that remove friction from everyday digital
-                  work instead of chasing engagement.
-                </p>
-              </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '30px'
+            }}>
+              {[
+                {
+                  color: '#0D6EFD',
+                  title: 'Everyday workflows',
+                  desc: 'Simple helpers for repeated tasks—planning, logging, remembering—that reduce mental load instead of adding to it.'
+                },
+                {
+                  color: '#6C757D',
+                  title: 'Personal wellbeing',
+                  desc: 'Calm tools around habits, reflection, and self-care that respect your time and attention.'
+                },
+                {
+                  color: '#198754',
+                  title: 'Quiet productivity',
+                  desc: 'Focused utilities that remove friction from everyday digital work instead of chasing engagement.'
+                }
+              ].map((item, i) => (
+                <div key={i} className="card" style={{ textAlign: 'center' }}>
+                  <div className="square-icon" style={{
+                    background: item.color,
+                    margin: '0 auto 16px auto'
+                  }}></div>
+                  <h3>{item.title}</h3>
+                  <p style={{ margin: 0, color: '#6C757D', fontSize: '16px' }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* How we decide */}
-        <section
-          id="how-we-decide"
-          className="border-b border-slate-200 bg-white"
-        >
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
+        {/* How We Decide Section */}
+        <section id="how-we-decide" className="section section-alt">
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
               How we decide what to build
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-              Every idea starts with someone on the team saying, &quot;This is
-              annoying. I wish there were a better way.&quot; Then we pressure-test
+            <p style={{
+              textAlign: 'center',
+              fontSize: '18px',
+              color: '#6C757D',
+              maxWidth: '700px',
+              margin: '0 auto 50px auto'
+            }}>
+              Every idea starts with someone on the team saying, "This is
+              annoying. I wish there were a better way." Then we pressure-test
               it with a few simple questions.
             </p>
 
-            <div className="mt-7 grid gap-5 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  1. Is this a real, recurring friction?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We look for patterns in our own days and conversations. If
-                  it&apos;s a one-off complaint, we let it go. If it keeps
-                  coming up, we explore.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  2. Can it stay small and focused?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We prefer products that can do one job well with a clear,
-                  simple interface. If an idea demands ten dashboards, it&apos;s
-                  probably not for us.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  3. Would we use it a year from now?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We try to ignore hype. If we can&apos;t imagine ourselves
-                  still using the app regularly after the novelty wears off,
-                  we&apos;re comfortable killing the idea early.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-sm font-semibold text-slate-900">
-                  4. Does it respect people&apos;s attention?
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  We avoid dark patterns and addictive loops. The ideal app
-                  lets you get what you need quickly, then get back to your
-                  life.
-                </p>
-              </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '20px'
+            }}>
+              {[
+                {
+                  num: '1',
+                  q: 'Is this a real, recurring friction?',
+                  a: "We look for patterns in our own days and conversations. If it's a one-off complaint, we let it go."
+                },
+                {
+                  num: '2',
+                  q: 'Can it stay small and focused?',
+                  a: 'We prefer products that can do one job well with a clear, simple interface.'
+                },
+                {
+                  num: '3',
+                  q: 'Would we use it a year from now?',
+                  a: "We try to ignore hype. If we can't imagine ourselves still using the app after the novelty wears off, we drop it."
+                },
+                {
+                  num: '4',
+                  q: "Does it respect people's attention?",
+                  a: 'We avoid dark patterns and addictive loops. The ideal app lets you get what you need quickly.'
+                }
+              ].map((item, i) => (
+                <div key={i} style={{
+                  background: '#FFFFFF',
+                  borderLeft: '4px solid #0D6EFD',
+                  padding: '24px',
+                  borderRadius: '0 8px 8px 0'
+                }}>
+                  <div style={{
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    color: '#0D6EFD',
+                    marginBottom: '12px'
+                  }}>
+                    {item.num}.
+                  </div>
+                  <h3 style={{ fontSize: '18px', marginBottom: '8px' }}>
+                    {item.q}
+                  </h3>
+                  <p style={{ margin: 0, color: '#6C757D', fontSize: '16px' }}>
+                    {item.a}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Example concepts */}
-        <section id="apps" className="border-b border-slate-200 bg-slate-50">
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              Example concepts we&apos;re exploring
+        {/* Example Concepts Section */}
+        <section id="apps" className="section">
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
+              Example concepts we're exploring
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
+            <p style={{
+              textAlign: 'center',
+              fontSize: '18px',
+              color: '#6C757D',
+              maxWidth: '700px',
+              margin: '0 auto 50px auto'
+            }}>
               These are placeholder concepts to show the type of products we
-              like to work on. You can later replace them with real, shipped
-              apps.
+              like to work on.
             </p>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5">
-                <span className="text-xs font-medium uppercase tracking-[0.16em] text-sky-600">
-                  Concept
-                </span>
-                <h3 className="mt-2 text-sm font-semibold text-slate-900">
-                  Tiny routine companion
-                </h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">
-                  A small helper for two or three meaningful daily habits—not
-                  twenty. Designed to be opened for seconds, not minutes.
-                </p>
-                <p className="mt-3 text-xs text-slate-500">
-                  Status: internal idea
-                </p>
-              </div>
-
-              <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5">
-                <span className="text-xs font-medium uppercase tracking-[0.16em] text-sky-600">
-                  Concept
-                </span>
-                <h3 className="mt-2 text-sm font-semibold text-slate-900">
-                  Gentle focus blocks
-                </h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">
-                  A focus timer that quietly marks out a block of time for one
-                  task—no streaks, no guilt, no gamification.
-                </p>
-                <p className="mt-3 text-xs text-slate-500">
-                  Status: idea backlog
-                </p>
-              </div>
-
-              <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5">
-                <span className="text-xs font-medium uppercase tracking-[0.16em] text-sky-600">
-                  Concept
-                </span>
-                <h3 className="mt-2 text-sm font-semibold text-slate-900">
-                  One-minute daily check-in
-                </h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">
-                  A quick daily check-in that captures how the day felt without
-                  turning your life into content.
-                </p>
-                <p className="mt-3 text-xs text-slate-500">
-                  Status: early exploration
-                </p>
-              </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '30px'
+            }}>
+              {[
+                {
+                  badge: 'Internal idea',
+                  title: 'Tiny routine companion',
+                  desc: 'A small helper for two or three meaningful daily habits—not twenty. Designed to be opened for seconds, not minutes.'
+                },
+                {
+                  badge: 'Idea backlog',
+                  title: 'Gentle focus blocks',
+                  desc: 'A focus timer that quietly marks out a block of time for one task—no streaks, no guilt, no gamification.'
+                },
+                {
+                  badge: 'Early exploration',
+                  title: 'One-minute daily check-in',
+                  desc: 'A quick daily check-in that captures how the day felt without turning your life into content.'
+                }
+              ].map((item, i) => (
+                <div key={i} className="card">
+                  <div style={{
+                    display: 'inline-block',
+                    background: '#E7F1FF',
+                    color: '#0D6EFD',
+                    padding: '6px 12px',
+                    borderRadius: '12px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    marginBottom: '16px'
+                  }}>
+                    {item.badge}
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    color: '#6C757D',
+                    marginBottom: '8px'
+                  }}>
+                    Concept
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p style={{ margin: 0, color: '#6C757D', fontSize: '16px' }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Contact */}
-        <section id="contact" className="bg-white">
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              Contact
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-              If you&apos;d like to follow what we&apos;re building, explore a
-              collaboration, or share an everyday problem you&apos;d love an
-              app for, we&apos;re happy to hear from you.
+        {/* Contact Section */}
+        <section id="contact" className="section section-alt">
+          <div style={{
+            maxWidth: '600px',
+            margin: '0 auto',
+            textAlign: 'center'
+          }}>
+            <h2>Contact</h2>
+            <p style={{
+              fontSize: '18px',
+              color: '#6C757D',
+              marginBottom: '30px'
+            }}>
+              If you'd like to follow what we're building, explore a
+              collaboration, or share an everyday problem you'd love an
+              app for, we're happy to hear from you.
             </p>
 
-            <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6">
-              <p className="text-sm text-slate-700">
-                For now, the easiest way to reach us is:
-              </p>
-              <p className="mt-2 text-sm font-medium text-slate-900">
-                <a
-                  href="mailto:hello@zdev.studio"
-                  className="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500"
-                >
-                  hello@zdev.studio
-                </a>
-              </p>
-              <p className="mt-4 text-xs text-slate-500">
-                Later, this can be swapped for a simple contact form wired to
-                your preferred inbox or support tool.
-              </p>
+            <div style={{
+              background: '#FFFFFF',
+              border: '2px solid #DEE2E6',
+              borderRadius: '8px',
+              padding: '24px',
+              display: 'inline-block',
+              transition: 'border-color 0.2s'
+            }}>
+              <a
+                href="mailto:hello@zdev.studio"
+                style={{
+                  fontSize: '20px',
+                  fontWeight: 600,
+                  color: '#0D6EFD',
+                  textDecoration: 'none'
+                }}
+              >
+                hello@zdev.studio
+              </a>
             </div>
           </div>
         </section>
